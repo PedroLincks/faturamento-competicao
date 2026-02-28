@@ -828,6 +828,100 @@
     }
 
     /* ========================================
+       MODAL TERMOS / REGULAMENTO
+    ======================================== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--card-bg, #1a1a2e);
+      border: 1px solid var(--glass-border, rgba(255,255,255,0.08));
+      border-radius: 16px;
+      max-width: 720px;
+      width: 100%;
+      max-height: 85vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      background: none;
+      border: none;
+      color: var(--text-muted, #999);
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+      z-index: 1;
+      transition: color 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--text-primary, #fff);
+    }
+
+    .modal-body {
+      padding: 40px 32px;
+      overflow-y: auto;
+      color: var(--text-secondary, #ccc);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .modal-body h2 {
+      color: var(--text-primary, #fff);
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+      text-align: center;
+    }
+
+    .modal-body h3 {
+      color: var(--text-primary, #fff);
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .modal-body h4 {
+      color: var(--text-primary, #fff);
+      font-size: 1rem;
+      margin-top: 24px;
+      margin-bottom: 8px;
+    }
+
+    .modal-body p {
+      margin-bottom: 8px;
+    }
+
+    .modal-body a {
+      color: var(--accent, #a78bfa);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .modal-body {
+        padding: 32px 20px;
+      }
+    }
+
+    /* ========================================
        FOOTER
     ======================================== */
     footer {
@@ -1208,12 +1302,83 @@
     </div>
   </section>
 
+  <!-- Modal Termos de Uso / Regulamento -->
+  <div class="modal-overlay" id="modal-termos">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <div class="modal-body">
+        <h2>REGULAMENTO</h2>
+        <h3>COMPETIÇÃO DE FATURAMENTO PARA ALUNAS ACELERAÇÃO NUTRI DE CONSULTÓRIO</h3>
+        <p>O presente instrumento visa regulamentar a inscrição e participação na competição de faturamento das alunas Aceleração Nutri de Consultório - ANC, da Nutri De Consultório Ltda, pessoa jurídica de direito privado, estabelecida no Brasil, inscrita no Cadastro Nacional de Pessoas Jurídicas do Ministério da Fazenda (CNPJ/MF) sob o n. 41.934.813/0001-36, para conceder os prêmios listados.</p>
+        <p>O documento visa garantir a transparência e a justiça no processo de seleção da vencedora do prêmio, incentivando a dedicação e o desenvolvimento das alunas do curso de Aceleração Nutri de Consultório.</p>
+
+        <h4>1. INSCRIÇÃO</h4>
+        <p>1.1. Para participar da competição, as alunas interessadas devem preencher um formulário de inscrição específico para a premiação, disponibilizado pela Nutri de Consultório.</p>
+        <p>1.2. A competição será realizada durante o período de 02/03/2026 até 31/08/2026, sendo considerados válidos apenas as informações enviadas dentro desse intervalo.</p>
+        <p>1.3. É requisito indispensável que a participante mantenha inscrição ativa no programa Aceleração Nutri de Consultório – ANC durante todo o período da competição, bem como pagamento em dia.</p>
+        <p style="margin-left:1.5em;">1.3.1. A perda da condição de aluna ativa, por vencimento de contrato, cancelamento ou inadimplência, resultará na desclassificação automática.</p>
+        <p>1.4. Caso o contrato da aluna vença durante o período de vigência da competição, sua participação somente poderá continuar mediante renovação imediata do ANC, de forma a assegurar sua condição de aluna ativa e elegível até o encerramento da ação.</p>
+        <p>1.5. A inscrição na competição poderá ser realizada a qualquer momento dentro do período oficial, entretanto, a participante declara estar ciente de que não haverá tratamento diferenciado, compensação de tempo ou envio retroativo de faturamentos.</p>
+        <p style="margin-left:1.5em;">1.5.1. A aluna que ingressar após o início da competição participará de acordo com o status atual do ranking e com as regras vigentes, concorrendo em igualdade com as demais conforme os critérios estabelecidos.</p>
+
+        <h4>2. REGRAS DE PREENCHIMENTO</h4>
+        <p>2.1. As participantes deverão enviar semanalmente seu faturamento por meio do formulário oficial disponibilizado pela Nutri de Consultório, cujo link será enviado via WhatsApp a cada domingo.</p>
+        <p>2.2. <strong>O envio do faturamento deverá ser feito toda segunda-feira até às 8:00 da manhã.</strong></p>
+        <p style="margin-left:1.5em;">2.2.1. No caso de mais de um envio de resposta no formulário, será considerado apenas o último envio dentro do prazo da semana.</p>
+        <p>2.3. Preenchimentos e envios fora do prazo estipulado não serão considerados no ranking semanal.</p>
+        <p>2.4. Para que o preenchimento semanal seja considerado válido, é obrigatório que seja inserido:</p>
+        <p style="margin-left:1.5em;">2.4.1. Nome completo;</p>
+        <p style="margin-left:1.5em;">2.4.2. E-mail correto;</p>
+        <p style="margin-left:1.5em;">2.4.3. Selecionar a data correspondente à semana correta de preenchimento;</p>
+        <p style="margin-left:1.5em;">2.4.4. Anexar os comprovantes de faturamento para a validação.</p>
+        <p>2.5. Os dados devem ser enviados exclusivamente pelo formulário oficial. Envios por outros canais não serão considerados.</p>
+
+        <h4>3. DESCLASSIFICAÇÃO</h4>
+        <p>3.1. Será automaticamente desclassificada a participante que:</p>
+        <p style="margin-left:1.5em;">3.1.1. Apresentar informações falsas ou adulteradas;</p>
+        <p style="margin-left:1.5em;">3.1.2. Deixar de ser aluna ativa da ANC durante o período da ação;</p>
+        <p style="margin-left:1.5em;">3.1.3. Descumprir qualquer cláusula deste regulamento.</p>
+
+        <h4>4. APURAÇÃO E RANKING</h4>
+        <p>4.1. A classificação semanal será baseada no faturamento total declarado até o momento comprovado por cada participante e disponibilizada no site oficial: <a href="https://competicao.nutrideconsultorio.com" target="_blank">https://competicao.nutrideconsultorio.com</a></p>
+        <p>4.2. A Nutri de Consultório poderá solicitar o reenvio de comprovantes caso identifique divergências, inconsistências ou material ilegível.</p>
+        <p>4.3. A organização poderá auditar informações a qualquer tempo, inclusive solicitando comprovantes adicionais, se necessário.</p>
+        <p>4.4. O ranking final será apurado com base no faturamento total (soma de todos os faturamentos válidos semanais) declarado por cada participante durante o período total da competição.</p>
+        <p>4.5. Em caso de empate para o ranking final e apuração das vencedoras, o critério de desempate seguirá a seguinte ordem:</p>
+        <p style="margin-left:1.5em;">4.5.1. Maior frequência de envios semanais completos e válidos;</p>
+        <p style="margin-left:1.5em;">4.5.2. Maior faturamento no último mês da competição (agosto/2026);</p>
+        <p style="margin-left:1.5em;">4.5.3. Data/hora do último envio válido (quem enviou primeiro);</p>
+
+        <h4>5. PREMIAÇÃO</h4>
+        <p>5.1. Ao final da competição, serão premiadas as três alunas com maior faturamento total comprovado:</p>
+        <p style="margin-left:1.5em;">5.1.1. <strong>1º lugar:</strong> MacBook 14 polegadas;</p>
+        <p style="margin-left:1.5em;">5.1.2. <strong>2º lugar:</strong> iPhone 15;</p>
+        <p style="margin-left:1.5em;">5.1.3. <strong>3º lugar:</strong> Kit de Produção de Conteúdo;</p>
+        <p>5.2. Os prêmios são pessoais e intransferíveis, não podendo ser trocados por dinheiro ou outros produtos/serviços.</p>
+        <p>5.3. A entrega será combinada diretamente com as vencedoras após a divulgação do resultado.</p>
+        <p>5.4. No caso de necessidade de envio para a vencedora, os custos pela entrega serão arcados por esta.</p>
+
+        <h4>6. PROTEÇÃO DE DADOS</h4>
+        <p>6.1. A Nutri de Consultório adotará todas as medidas necessárias à proteção de dados pessoais relacionadas ao presente regulamento, nos termos da Lei nº 13.709/18 – Lei Geral de Proteção de Dados (LGPD).</p>
+        <p>6.2. Todas as informações e comprovantes enviados pelas participantes serão utilizados exclusivamente para fins de apuração da competição.</p>
+        <p>6.3. Ao participar, a aluna concorda com o tratamento de seus dados conforme a LGPD, ficando ciente de que seus dados financeiros não serão divulgados publicamente, sendo compartilhado apenas o ranking com posição e nome das vencedoras.</p>
+
+        <h4>7. DISPOSIÇÕES GERAIS</h4>
+        <p>7.1. A participação neste concurso implica na autorização de uso de imagem e voz, pela Nutri de Consultório Ltda, da imagem e voz das participantes, de forma gratuita, para promoção pessoal, em todo o território nacional e no exterior.</p>
+        <p>7.2. A participação neste concurso implica a aceitação total e irrestrita deste regulamento.</p>
+        <p>7.3. Quaisquer dúvidas ou situações não previstas neste regulamento serão resolvidas pela comissão organizadora do curso.</p>
+        <p>7.4. A organização se reserva o direito de alterar este regulamento, comunicando previamente todas as participantes.</p>
+        <p>7.5. O Regulamento é regido e interpretado de acordo com as leis da República Federativa do Brasil. Fica eleito o Foro da Comarca de São José dos Campos-SP, como o competente para dirimir quaisquer questões porventura oriundas do presente documento, com expressa renúncia a qualquer outro, por mais privilegiado que seja.</p>
+        <p>7.6. Caso você tenha alguma dúvida, comentário ou sugestão, por favor, entre em contato conosco por meio do e-mail <a href="mailto:suporte@nutrideconsultorio.com">suporte@nutrideconsultorio.com</a>.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer>
     <div class="container">
       <div class="footer-links">
-        <a href="#">Política de Privacidade</a>
-        <a href="#">Termos de Uso</a>
+        <a href="#" id="btn-termos">Termos de Uso</a>
       </div>
       <span class="footer-updated" id="footer-updated">Atualizado em: —</span>
     </div>
@@ -1579,6 +1744,33 @@
         ticking = true;
       }
     });
+
+    /* =========================================================
+       MODAL TERMOS DE USO
+    ========================================================= */
+    (function() {
+      const modal = document.getElementById('modal-termos');
+      const btnOpen = document.getElementById('btn-termos');
+      const btnClose = document.getElementById('modal-close');
+
+      btnOpen.addEventListener('click', function(e) {
+        e.preventDefault();
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+
+      btnClose.addEventListener('click', function() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    })();
 
   </script>
 </body>
